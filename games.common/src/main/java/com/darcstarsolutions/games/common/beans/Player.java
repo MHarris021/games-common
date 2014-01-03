@@ -23,17 +23,9 @@ public class Player extends GameObjectWithRules<Player> implements
 		super(name, description);
 	}
 
-	public Player(String name, String description,
-			RuleContainer<Player> ruleContainer, BigInteger score) {
+	public Player(String name, String description, BigInteger score) {
 		super(name, description);
-		this.ruleContainer = ruleContainer;
-		this.score = score;
-	}
-
-	public Player(RuleContainer<Player> ruleContainer, BigInteger score) {
-		super();
-		this.ruleContainer = ruleContainer;
-		this.score = score;
+		this.setScore(score);
 	}
 
 	public BigInteger getScore() {
@@ -46,8 +38,9 @@ public class Player extends GameObjectWithRules<Player> implements
 
 	@Override
 	public String toString() {
-		return "Player{" + "name=" + getName() + "score=" + score
-				+ ", playerRules=" + getRules() + '}';
+		return "Player{" + "name='" + getName() + "', description='"
+				+ getDescription() + "', score=" + score + ", playerRules="
+				+ getRules() + '}';
 	}
 
 	@Override
@@ -60,9 +53,6 @@ public class Player extends GameObjectWithRules<Player> implements
 			return false;
 
 		Player player = (Player) o;
-
-		if (!getRules().equals(player.getRules()))
-			return false;
 		if (!score.equals(player.score))
 			return false;
 
@@ -73,7 +63,6 @@ public class Player extends GameObjectWithRules<Player> implements
 	public int hashCode() {
 		int result = super.hashCode();
 		result = 31 * result + score.hashCode();
-		result = 31 * result + getRules().hashCode();
 		return result;
 	}
 }

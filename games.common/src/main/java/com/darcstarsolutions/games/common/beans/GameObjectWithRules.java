@@ -2,22 +2,24 @@ package com.darcstarsolutions.games.common.beans;
 
 import java.util.List;
 
-public abstract class GameObjectWithRules<Type extends GameObject> extends
-		GameObject implements RuleContainer<Type> {
+public class GameObjectWithRules<Type extends GameObject> extends GameObject
+		implements RuleContainer<Type> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected RuleContainer<Type> ruleContainer = new StandardRuleContainer<>();
+	protected RuleContainer<Type> ruleContainer;
 
-	public GameObjectWithRules() {
-		super();
+	protected GameObjectWithRules() {
+		this("", "");
 	}
 
-	public GameObjectWithRules(String name, String description) {
+	@SuppressWarnings("unchecked")
+	protected GameObjectWithRules(String name, String description) {
 		super(name, description);
+		ruleContainer = new StandardRuleContainer<Type>((Type) this);
 	}
 
 	public RuleContainer<Type> getRuleContainer() {

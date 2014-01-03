@@ -22,13 +22,15 @@ import com.darcstarsolutions.games.common.beans.StandardRuleContainer;
 import com.darcstarsolutions.games.common.beans.rules.PlayerRule;
 
 public class StandardRuleContainerTest {
+	private Player mockPlayer;
 	private RuleContainer<Player> ruleContainer;
 	private PlayerRule mockPlayerRule;
 	private PlayerRule unexpectedMockPlayerRule;
 
 	@Before
 	public void setUp() throws Exception {
-		ruleContainer = new StandardRuleContainer<>();
+		mockPlayer = EasyMock.createMock(Player.class);
+		ruleContainer = new StandardRuleContainer<Player>(mockPlayer);
 		mockPlayerRule = EasyMock.createMock(PlayerRule.class);
 		EasyMock.expect(mockPlayerRule.getName()).andReturn("Mock");
 		unexpectedMockPlayerRule = EasyMock.createMock(PlayerRule.class);

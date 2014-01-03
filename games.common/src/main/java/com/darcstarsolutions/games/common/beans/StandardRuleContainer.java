@@ -11,13 +11,27 @@ public class StandardRuleContainer<Type extends GameObject> extends GameObject
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Type gameObject;
+	
 	private List<Rule<Type>> rules = new ArrayList<>();
 
-	public StandardRuleContainer() {
+	public StandardRuleContainer(Type gameObject) {
+		this.gameObject = gameObject;
+	}
+
+	public Type getGameObject() {
+		return gameObject;
+	}
+
+	public void setGameObject(Type gameObject) {
+		this.gameObject = gameObject;
 	}
 
 	@Override
 	public void applyAllRules() {
+		for(Rule<Type> rule : getRules()){
+			rule.apply(getGameObject());
+		}
 
 	}
 
@@ -68,21 +82,19 @@ public class StandardRuleContainer<Type extends GameObject> extends GameObject
 	@Override
 	public <T extends Rule<Type>> void applyRule(int location) {
 		T rule = (T) rules.get(location);
-		rule.apply((Type) this);
+		rule.apply(getGameObject());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends Rule<Type>> void applyRule(T rule) {
-		rule.apply((Type) this);
+		rule.apply(getGameObject());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends Rule<Type>> T addAndApplyRule(T rule) {
 		boolean result = rules.add(rule);
 		if (result) {
-			rule.apply((Type) this);
+			rule.apply(getGameObject());
 			return rule;
 		} else {
 			return null;
