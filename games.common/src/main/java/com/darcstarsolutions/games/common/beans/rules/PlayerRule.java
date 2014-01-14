@@ -12,6 +12,13 @@ public abstract class PlayerRule extends Rule<Player> {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
+	public PlayerRule() {
+		super();
+	}
+
+	public PlayerRule(String name, String description) {
+		super(name, description);
+	}
 
 }

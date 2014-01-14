@@ -19,6 +19,7 @@ public class GameObject implements Serializable,
 	private String description = "";
 
 	protected GameObject() {
+		super();
 	}
 
 	protected GameObject(String name, String description) {

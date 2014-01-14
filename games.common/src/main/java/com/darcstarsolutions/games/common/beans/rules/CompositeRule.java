@@ -20,8 +20,7 @@ public class CompositeRule<Type extends GameObject, RuleType extends Rule<Type>>
 	private List<RuleType> rules;
 
 	public CompositeRule() {
-		List<RuleType> rules = new ArrayList<>();
-		setRules(rules);
+		this(new ArrayList<RuleType>());
 	}
 
 	public CompositeRule(List<RuleType> rules) {

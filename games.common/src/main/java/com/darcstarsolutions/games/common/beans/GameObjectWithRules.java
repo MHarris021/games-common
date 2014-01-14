@@ -10,7 +10,7 @@ public class GameObjectWithRules<Type extends GameObject> extends GameObject
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected RuleContainer<Type> ruleContainer;
+	private RuleContainer<Type> ruleContainer;
 
 	protected GameObjectWithRules() {
 		this("", "");
@@ -19,7 +19,12 @@ public class GameObjectWithRules<Type extends GameObject> extends GameObject
 	@SuppressWarnings("unchecked")
 	protected GameObjectWithRules(String name, String description) {
 		super(name, description);
-		ruleContainer = new StandardRuleContainer<Type>((Type) this);
+		setRuleContainer(new StandardRuleContainer<Type>((Type) this));
+	}
+	
+	protected GameObjectWithRules(String name, String description, RuleContainer<Type> ruleContainer){
+		super(name, description);
+		setRuleContainer(ruleContainer);
 	}
 
 	public RuleContainer<Type> getRuleContainer() {

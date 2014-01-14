@@ -36,6 +36,10 @@ public class Player extends GameObjectWithRules<Player> implements
 		this.score = score;
 	}
 
+	public void setScore(long score) {
+		setScore(BigInteger.valueOf(score));
+	}
+	
 	@Override
 	public String toString() {
 		return "Player{" + "name='" + getName() + "', description='"

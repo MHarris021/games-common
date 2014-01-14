@@ -99,6 +99,12 @@ public class PlayerTest {
 		player.setScore(BigInteger.valueOf(100));
 		assertThat(player.getScore(), is(equalTo(BigInteger.valueOf(100))));
 	}
+	
+	@Test
+	public void testSetScoreLong() {
+		player.setScore(100);
+		assertThat(player.getScore(), is(equalTo(BigInteger.valueOf(100))));
+	}
 
 	@Test
 	public void testApplyRule() {

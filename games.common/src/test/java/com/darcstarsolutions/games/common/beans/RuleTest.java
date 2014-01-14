@@ -49,21 +49,21 @@ public class RuleTest {
 	public void testToString() {
 		assertNotNull(defaultRule);
 		assertThat(defaultRule.toString(), is(equalTo("Rule{" + "name='', "
-				+ "description='', " + "gameObjectClass='GameObject'" + "}")));
+				+ "description=''" + "}")));
 		assertNotNull(defaultPlayerRule);
 		assertThat(defaultPlayerRule.toString(), is(equalTo("Rule{"
-				+ "name='', " + "description='', " + "gameObjectClass='Player'"
-				+ "}")));
+				+ "name='', " + "description=''" + "}")));
 	}
 
 	@SuppressWarnings("serial")
 	@Test
 	public void testCompareTo() {
-		Rule<GameObject> another = new Rule<GameObject>("test", "test description") {
-			
+		Rule<GameObject> another = new Rule<GameObject>("test",
+				"test description") {
+
 			@Override
 			protected void applyRule() {
-				
+
 			}
 		};
 		assertThat(defaultRule.compareTo(another), is(not(0)));
@@ -104,14 +104,6 @@ public class RuleTest {
 		defaultPlayerRule.setGameObject(mockPlayer);
 		assertThat(defaultPlayerRule.getGameObject(),
 				is(sameInstance(mockPlayer)));
-	}
-
-	@Test
-	public void testGetGameObjectClass() {
-		assertThat(defaultRule.getGameObjectClass(),
-				is(equalTo(GameObject.class)));
-		assertThat(defaultPlayerRule.getGameObjectClass(),
-				is(equalTo(Player.class)));
 	}
 
 	@Test

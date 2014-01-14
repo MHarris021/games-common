@@ -3,8 +3,6 @@ package com.darcstarsolutions.games.common.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.darcstarsolutions.games.common.beans.rules.GameRule;
-
 /**
  * Created by tetn on 12/23/13.
  */
@@ -16,17 +14,20 @@ public abstract class Game extends GameObjectWithRules<Game> implements
 	private static final long serialVersionUID = 1L;
 
 	private List<Player> players;
-	private List<GameRule> gameRules;
-
-	private Player winningPlayer;
+	private List<Player> winningPlayers;
 
 	public Game() {
-		this(new ArrayList<Player>(), new ArrayList<GameRule>());
+		this("", "");
+	}
+	
+	public Game(String name, String description) {
+		this(name, description, new ArrayList<Player>());
 	}
 
-	public Game(List<Player> players, List<GameRule> gameRules) {
+  
+	public Game(String name, String description, List<Player> players) {
+		super(name, description);
 		this.setPlayers(players);
-		this.setGameRules(gameRules);
 	}
 
 	public List<Player> getPlayers() {
@@ -37,21 +38,13 @@ public abstract class Game extends GameObjectWithRules<Game> implements
 		this.players = players;
 	}
 
-	public List<GameRule> getGameRules() {
-		return gameRules;
+	public List<Player> getWinningPlayers() {
+		setWinningPlayers(determineWinningPlayers());
+		return winningPlayers;
 	}
 
-	public void setGameRules(List<GameRule> gameRules) {
-		this.gameRules = gameRules;
-	}
-
-	public Player getWinningPlayer() {
-		setWinningPlayer(determineWinningPlayer());
-		return winningPlayer;
-	}
-
-	protected void setWinningPlayer(Player winningPlayer) {
-		this.winningPlayer = winningPlayer;
+	protected void setWinningPlayers(List<Player> winningPlayers) {
+		this.winningPlayers = winningPlayers;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -94,6 +87,6 @@ public abstract class Game extends GameObjectWithRules<Game> implements
 		return playerList.contains(player);
 	}
 
-	protected abstract Player determineWinningPlayer();
+	protected abstract List<Player> determineWinningPlayers();
 
 }
