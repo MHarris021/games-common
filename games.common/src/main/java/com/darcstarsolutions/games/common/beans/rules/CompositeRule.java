@@ -20,11 +20,20 @@ public class CompositeRule<Type extends GameObject, RuleType extends Rule<Type>>
 	private List<RuleType> rules;
 
 	public CompositeRule() {
-		this(new ArrayList<RuleType>());
+		this("", "");
+	}
+
+	public CompositeRule(String name, String description) {
+		this(name, description, new ArrayList<RuleType>());
+	}
+
+	public CompositeRule(String name, String description, List<RuleType> rules) {
+		super(name, description);
+		setRules(rules);
 	}
 
 	public CompositeRule(List<RuleType> rules) {
-		setRules(rules);
+		this("", "", rules);
 	}
 
 	public List<RuleType> getRules() {
@@ -35,22 +44,34 @@ public class CompositeRule<Type extends GameObject, RuleType extends Rule<Type>>
 		this.rules = rules;
 	}
 
-	public RuleType addRule(RuleType rule) {
-		getRules().add(rule);
-		return rule;
+	public <T extends RuleType> T addRule(T rule) {
+		T result = null;
+		if(getRules().add(rule)){
+			result = rule;
+		}
+		return result;
 	}
 
-	public boolean removeRule(RuleType rule) {
+	public <T extends RuleType> boolean removeRule(T rule) {
 		return getRules().remove(rule);
 	}
 
-	public RuleType removeRule(int location) {
-		RuleType rule = getRules().remove(location);
+	@SuppressWarnings("unchecked")
+	public <T extends RuleType> T removeRule(int location) {
+		T rule = (T) getRules().remove(location);
 		return rule;
 	}
 
-	public RuleType getRule(int location) {
-		return getRules().get(location);
+	@SuppressWarnings("unchecked")
+	public <T extends RuleType> T getRule(int location) {
+		return (T) getRules().get(location);
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public <T extends RuleType> T setRule(int location, T rule) {
+		T result = (T) getRules().set(location, rule);
+		return result;
 	}
 
 	@Override

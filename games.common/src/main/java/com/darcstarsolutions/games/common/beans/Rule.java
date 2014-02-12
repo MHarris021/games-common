@@ -1,6 +1,5 @@
 package com.darcstarsolutions.games.common.beans;
 
-
 /**
  * Created by tetn on 12/16/13.
  */
@@ -11,7 +10,7 @@ public abstract class Rule<Type extends GameObject> extends GameObject {
 	private static final long serialVersionUID = 1L;
 
 	private Type gameObject;
-	
+
 	protected Rule() {
 		super();
 	}
@@ -20,7 +19,7 @@ public abstract class Rule<Type extends GameObject> extends GameObject {
 		super(name, description);
 	}
 
-		public Type getGameObject() {
+	public Type getGameObject() {
 		return gameObject;
 	}
 
@@ -28,13 +27,13 @@ public abstract class Rule<Type extends GameObject> extends GameObject {
 		this.gameObject = gameObject;
 	}
 
-	
 	protected abstract void applyRule();
 
-	public <T extends Type> Type apply(Type gameObject) {
-		setGameObject((Type) gameObject);
+	@SuppressWarnings("unchecked")
+	public <T extends Type> T apply(T gameObject) {
+		setGameObject(gameObject);
 		applyRule();
-		Type modifiedObject = getGameObject();
+		T modifiedObject = (T) getGameObject();
 		setGameObject(null);
 		return modifiedObject;
 	}

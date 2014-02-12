@@ -78,7 +78,9 @@ public class StandardRuleContainerTest {
 		ruleContainer.setRules(rules);
 		EasyMock.replay(mockPlayerRule, unexpectedMockPlayerRule);
 		ruleContainer.addRule(unexpectedMockPlayerRule);
-		ruleContainer.setRule(0, mockPlayerRule);
+		PlayerRule rule = ruleContainer.setRule(0, mockPlayerRule);
+		assertNotNull(rule);
+		assertThat(rule, is(sameInstance(unexpectedMockPlayerRule)));
 		assertNotNull(ruleContainer.getRule(0));
 		assertThat(ruleContainer.getRule(0).getName(), is(equalTo("Mock")));
 	}
