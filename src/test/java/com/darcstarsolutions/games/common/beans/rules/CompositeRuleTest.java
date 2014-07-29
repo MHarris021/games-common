@@ -30,7 +30,7 @@ public class CompositeRuleTest {
         restaurant = new ChangePlayerScoreRule("Restaurant",
                 "Restaurants give 5", BigInteger.valueOf(5));
         player = new Player("Test", "Test player");
-        defaultCompositeRule = new CompositeRule<>();
+        defaultCompositeRule = new CompositeRule<Player, PlayerRule>();
     }
 
     @After
@@ -67,7 +67,7 @@ public class CompositeRuleTest {
 
     @Test
     public void testCompositeRuleStringString() {
-        compositeRule = new CompositeRule<>("test", "test description");
+        compositeRule = new CompositeRule<Player, PlayerRule>("test", "test description");
         assertNotNull(compositeRule);
         assertThat(compositeRule.getName(), is(equalTo("test")));
         assertThat(compositeRule.getDescription(),
@@ -78,10 +78,10 @@ public class CompositeRuleTest {
 
     @Test
     public void testCompositeRuleListOfRuleType() {
-        List<PlayerRule> playerRules = new ArrayList<>();
+        List<PlayerRule> playerRules = new ArrayList<PlayerRule>();
         playerRules.add(animal);
         playerRules.add(restaurant);
-        compositeRule = new CompositeRule<>(playerRules);
+        compositeRule = new CompositeRule<Player, PlayerRule>(playerRules);
         assertNotNull(compositeRule);
         assertThat(compositeRule.getRules().size(), is(equalTo(2)));
         assertThat((ChangePlayerScoreRule) compositeRule.getRule(0),
@@ -92,10 +92,10 @@ public class CompositeRuleTest {
 
     @Test
     public void testCompositeRuleStringStringListOfRuleType() {
-        List<PlayerRule> playerRules = new ArrayList<>();
+        List<PlayerRule> playerRules = new ArrayList<PlayerRule>();
         playerRules.add(animal);
         playerRules.add(restaurant);
-        compositeRule = new CompositeRule<>("test", "test description",
+        compositeRule = new CompositeRule<Player, PlayerRule>("test", "test description",
                 playerRules);
         assertNotNull(compositeRule);
         assertThat(compositeRule.getName(), is(equalTo("test")));
@@ -120,7 +120,7 @@ public class CompositeRuleTest {
         assertNotNull(defaultCompositeRule);
         assertNotNull(defaultCompositeRule.getRules());
         assertThat(defaultCompositeRule.getRules().isEmpty(), is(true));
-        List<PlayerRule> playerRules = new ArrayList<>();
+        List<PlayerRule> playerRules = new ArrayList<PlayerRule>();
         assertThat(defaultCompositeRule.getRules(),
                 is(not(sameInstance(playerRules))));
         defaultCompositeRule.setRules(playerRules);
@@ -173,9 +173,9 @@ public class CompositeRuleTest {
 
     @Test
     public void testGetRule() {
-        List<PlayerRule> rules = new ArrayList<>();
+        List<PlayerRule> rules = new ArrayList<PlayerRule>();
         rules.add(animal);
-        compositeRule = new CompositeRule<>(rules);
+        compositeRule = new CompositeRule<Player, PlayerRule>(rules);
         assertNotNull(compositeRule);
         assertThat((ChangePlayerScoreRule) compositeRule.getRule(0),
                 is(sameInstance(animal)));
@@ -183,9 +183,9 @@ public class CompositeRuleTest {
 
     @Test
     public void testSetRuleIntRuleType() {
-        List<PlayerRule> rules = new ArrayList<>();
+        List<PlayerRule> rules = new ArrayList<PlayerRule>();
         rules.add(animal);
-        compositeRule = new CompositeRule<>(rules);
+        compositeRule = new CompositeRule<Player, PlayerRule>(rules);
         assertNotNull(compositeRule);
         assertThat((ChangePlayerScoreRule) compositeRule.getRule(0),
                 is(sameInstance(animal)));
