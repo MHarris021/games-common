@@ -5,6 +5,5 @@
 gradle.properties
 
 # Package Files #
-*.jar
 *.war
 *.ear
