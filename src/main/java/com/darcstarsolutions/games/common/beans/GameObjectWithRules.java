@@ -1,6 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class GameObjectWithRules<Type extends GameObject> extends GameObject
      */
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     private RuleContainer<Type> ruleContainer;
 
     protected GameObjectWithRules() {
@@ -94,4 +96,10 @@ public class GameObjectWithRules<Type extends GameObject> extends GameObject
         ruleContainer.applyAllRules();
     }
 
+    @Override
+    public String toString() {
+        return "GameObjectWithRules{" + "id=" + getId() + ", name='" + getName() + '\''
+                + ", description='" + getDescription() + '\'' +
+                ", rules=" + getRules() + '}';
+    }
 }
