@@ -31,8 +31,14 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}
+
 artifacts {
     archives sourcesJar;
+    archives javadocJar;
 }
 
 apply plugin: 'distribution'
@@ -58,6 +64,7 @@ publishing {
             artifactId 'games-common'
 
             artifact sourcesJar
+            artifact javadocJar
 
         }
     }
