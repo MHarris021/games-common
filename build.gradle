@@ -26,6 +26,28 @@ ext {
     bintrayPackage = 'games'
 }
 
+task sourcesJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar;
+}
+
+apply plugin: 'distribution'
+
+distributions {
+    main {
+        baseName = archivesBaseName
+
+        contents {
+            from { libsDir }
+        }
+    }
+
+}
+
 apply plugin: 'maven-publish'
 
 publishing {
@@ -34,6 +56,8 @@ publishing {
             from components.java
             groupId 'com.darcstarsolutions.games'
             artifactId 'games-common'
+
+            artifact sourcesJar
 
         }
     }
@@ -49,4 +73,5 @@ publishing {
             }
         }
     }
+
 }
