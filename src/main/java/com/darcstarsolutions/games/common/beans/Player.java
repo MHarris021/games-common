@@ -1,6 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.math.BigInteger;
 
@@ -35,18 +36,19 @@ public class Player extends GameObjectWithRules<Player> implements
         return score;
     }
 
-    public void setScore(BigInteger score) {
-        this.score = score;
-    }
-
     public void setScore(long score) {
         setScore(BigInteger.valueOf(score));
     }
 
+    @JsonSetter
+    public void setScore(BigInteger score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
-        return "Player{" + "name='" + getName() + "', description='"
-                + getDescription() + "', score=" + score + ", playerRules="
+        return "Player{" + "id=" + getId() + ", name='" + getName() + "', description='"
+                + getDescription() + "', score=" + score + ", rules="
                 + getRules() + '}';
     }
 

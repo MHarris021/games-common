@@ -1,0 +1,8 @@
+{"id": 0, "name": "", "description": "", "score": 0, "rules": [
+    {
+        "class": "com.darcstarsolutions.games.common.beans.PlayerTest$StubPlayerRule",
+        "id": 0,
+        "name": "",
+        "description": ""
+    }
+]}
