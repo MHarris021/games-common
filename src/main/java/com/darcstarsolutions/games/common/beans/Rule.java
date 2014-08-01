@@ -1,14 +1,19 @@
 package com.darcstarsolutions.games.common.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * Created by tetn on 12/16/13.
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
 public abstract class Rule<Type extends GameObject> extends GameObject {
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     private Type gameObject;
 
     protected Rule() {
@@ -19,7 +24,7 @@ public abstract class Rule<Type extends GameObject> extends GameObject {
         super(name, description);
     }
 
-    public Type getGameObject() {
+    protected Type getGameObject() {
         return gameObject;
     }
 
@@ -40,7 +45,7 @@ public abstract class Rule<Type extends GameObject> extends GameObject {
 
     @Override
     public String toString() {
-        return "Rule{" + "name='" + getName() + "', description='"
+        return "Rule{" + "id=" + getId() + ", name='" + getName() + "', description='"
                 + getDescription() + "'}";
     }
 

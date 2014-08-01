@@ -1,5 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigInteger;
 
 /**
@@ -13,6 +15,7 @@ public class Player extends GameObjectWithRules<Player> implements
      */
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty
     private BigInteger score = BigInteger.ZERO;
 
     public Player() {
@@ -32,12 +35,12 @@ public class Player extends GameObjectWithRules<Player> implements
         return score;
     }
 
-    public void setScore(long score) {
-        setScore(BigInteger.valueOf(score));
-    }
-
     public void setScore(BigInteger score) {
         this.score = score;
+    }
+
+    public void setScore(long score) {
+        setScore(BigInteger.valueOf(score));
     }
 
     @Override

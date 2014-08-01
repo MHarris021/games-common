@@ -10,7 +10,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -20,6 +19,11 @@
     <orderEntry type="library" scope="TEST" name="Gradle: cglib-nodep-2.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: objenesis-1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-annotations-2.4.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-core-2.4.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-databind-2.4.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: logback-classic-1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: logback-core-1.1.2" level="project" />
   </component>
 </module>
 

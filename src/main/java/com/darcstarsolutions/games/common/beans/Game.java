@@ -1,11 +1,15 @@
 package com.darcstarsolutions.games.common.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by tetn on 12/23/13.
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
 public abstract class Game extends GameObjectWithRules<Game> implements
         RuleContainer<Game> {
     /**
@@ -13,7 +17,10 @@ public abstract class Game extends GameObjectWithRules<Game> implements
      */
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty
     private List<Player> players;
+
+    @JsonProperty
     private List<Player> winningPlayers;
 
     public Game() {

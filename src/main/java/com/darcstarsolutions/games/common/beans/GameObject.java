@@ -1,5 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.math.BigInteger;
 
@@ -14,8 +16,13 @@ public class GameObject implements Serializable,
      */
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty
     private BigInteger id = BigInteger.ZERO;
+
+    @JsonProperty
     private String name = "";
+
+    @JsonProperty
     private String description = "";
 
     protected GameObject() {

@@ -1,5 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import java.util.List;
 
 public class GameObjectWithRules<Type extends GameObject> extends GameObject
@@ -36,6 +38,7 @@ public class GameObjectWithRules<Type extends GameObject> extends GameObject
     }
 
     @Override
+    @JsonGetter
     public List<Rule<Type>> getRules() {
         return ruleContainer.getRules();
     }
