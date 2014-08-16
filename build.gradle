@@ -1,6 +1,7 @@
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
-version = '1.0'
+version = '1.0.1'
 
 
 compileJava {
@@ -10,6 +11,18 @@ compileJava {
 
 repositories {
     mavenCentral();
+}
+
+jacoco {
+    toolVersion = "0.7.0.201403182114"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacoco/html"
+    }
 }
 
 dependencies {
