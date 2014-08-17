@@ -6,8 +6,8 @@ import com.darcstarsolutions.games.common.beans.Rule;
 /**
  * Created by tetn on 12/17/13.
  */
-public abstract class ConstrainedRule<Type extends GameObject, RuleType extends Rule<Type>>
-        extends Rule<Type> {
+public abstract class ConstrainedRule<G extends GameObject, R extends Rule<G>>
+        extends Rule<G> {
 
     /**
      *

@@ -7,14 +7,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * Created by tetn on 12/16/13.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
-public abstract class Rule<GameObjectType extends GameObject> extends GameObject {
+public abstract class Rule<G extends GameObject> extends GameObject {
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
     @JsonIgnore
-    private GameObjectType gameObject;
+    private G gameObject;
 
     protected Rule() {
         super();
@@ -24,18 +24,18 @@ public abstract class Rule<GameObjectType extends GameObject> extends GameObject
         super(name, description);
     }
 
-    protected GameObjectType getGameObject() {
+    protected G getGameObject() {
         return gameObject;
     }
 
-    protected void setGameObject(GameObjectType gameObject) {
+    protected void setGameObject(G gameObject) {
         this.gameObject = gameObject;
     }
 
     protected abstract void applyRule();
 
     @SuppressWarnings("unchecked")
-    public <T extends GameObjectType> T apply(T gameObject) {
+    public <T extends G> T apply(T gameObject) {
         setGameObject(gameObject);
         applyRule();
         T modifiedObject = (T) getGameObject();
