@@ -3,62 +3,62 @@ package com.darcstarsolutions.games.common.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StandardRuleContainer<Type extends GameObject> extends GameObject
-        implements RuleContainer<Type> {
+public class StandardRuleContainer<GameObjectType extends GameObject> extends GameObject
+        implements RuleContainer<GameObjectType> {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
-    private Type gameObject;
+    private GameObjectType gameObject;
 
-    private List<Rule<Type>> rules = new ArrayList<Rule<Type>>();
+    private List<Rule<GameObjectType>> rules = new ArrayList<Rule<GameObjectType>>();
 
-    public StandardRuleContainer(Type gameObject) {
+    public StandardRuleContainer(GameObjectType gameObject) {
         this.gameObject = gameObject;
     }
 
-    public Type getGameObject() {
+    public GameObjectType getGameObject() {
         return gameObject;
     }
 
-    public void setGameObject(Type gameObject) {
+    public void setGameObject(GameObjectType gameObject) {
         this.gameObject = gameObject;
     }
 
     @Override
     public void applyAllRules() {
-        for (Rule<Type> rule : getRules()) {
+        for (Rule<GameObjectType> rule : getRules()) {
             rule.apply(getGameObject());
         }
 
     }
 
     @Override
-    public List<Rule<Type>> getRules() {
+    public List<Rule<GameObjectType>> getRules() {
         return this.rules;
     }
 
     @Override
-    public void setRules(List<Rule<Type>> rules) {
+    public void setRules(List<Rule<GameObjectType>> rules) {
         this.rules = rules;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends Rule<Type>> T getRule(int location) {
+    public <T extends Rule<GameObjectType>> T getRule(int location) {
         return (T) rules.get(location);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends Rule<Type>> T setRule(int location, T rule) {
+    public <T extends Rule<GameObjectType>> T setRule(int location, T rule) {
         return (T) rules.set(location, rule);
     }
 
     @Override
-    public <T extends Rule<Type>> T addRule(T rule) {
+    public <T extends Rule<GameObjectType>> T addRule(T rule) {
         boolean result = rules.add(rule);
         if (result) {
             return rule;
@@ -69,29 +69,29 @@ public class StandardRuleContainer<Type extends GameObject> extends GameObject
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends Rule<Type>> T removeRule(int location) {
+    public <T extends Rule<GameObjectType>> T removeRule(int location) {
         return (T) rules.remove(location);
     }
 
     @Override
-    public <T extends Rule<Type>> boolean removeRule(T rule) {
+    public <T extends Rule<GameObjectType>> boolean removeRule(T rule) {
         return rules.remove(rule);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends Rule<Type>> void applyRule(int location) {
+    public <T extends Rule<GameObjectType>> void applyRule(int location) {
         T rule = (T) rules.get(location);
         rule.apply(getGameObject());
     }
 
     @Override
-    public <T extends Rule<Type>> void applyRule(T rule) {
+    public <T extends Rule<GameObjectType>> void applyRule(T rule) {
         rule.apply(getGameObject());
     }
 
     @Override
-    public <T extends Rule<Type>> T addAndApplyRule(T rule) {
+    public <T extends Rule<GameObjectType>> T addAndApplyRule(T rule) {
         boolean result = rules.add(rule);
         if (result) {
             rule.apply(getGameObject());
