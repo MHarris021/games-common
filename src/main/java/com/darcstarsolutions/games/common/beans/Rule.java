@@ -73,4 +73,10 @@ public abstract class Rule<G extends GameObject> extends GameObject {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (gameObject != null ? gameObject.hashCode() : 0);
+        return result;
+    }
 }
