@@ -2,32 +2,32 @@ package com.darcstarsolutions.games.common.beans;
 
 import java.util.List;
 
-public interface RuleContainer<GameObjectType extends GameObject> {
+public interface RuleContainer<G extends GameObject> {
 
-    public abstract List<Rule<GameObjectType>> getRules();
+    public abstract List<Rule<G>> getRules();
 
-    public abstract void setRules(List<Rule<GameObjectType>> rules);
+    public abstract void setRules(List<Rule<G>> rules);
 
-    public abstract <T extends Rule<GameObjectType>> T getRule(
+    public abstract <T extends Rule<G>> T getRule(
             int location);
 
-    public abstract <T extends Rule<GameObjectType>> T setRule(
+    public abstract <T extends Rule<G>> T setRule(
             int location, T rule);
 
-    public abstract <T extends Rule<GameObjectType>> T addRule(T rule);
+    public abstract <T extends Rule<G>> T addRule(T rule);
 
-    public abstract <T extends Rule<GameObjectType>> T removeRule(
+    public abstract <T extends Rule<G>> T removeRule(
             int location);
 
-    public abstract <T extends Rule<GameObjectType>> boolean removeRule(
+    public abstract <T extends Rule<G>> boolean removeRule(
             T rule);
 
-    public abstract <T extends Rule<GameObjectType>> void applyRule(
+    public abstract <T extends Rule<G>> void applyRule(
             int location);
 
-    public abstract <T extends Rule<GameObjectType>> void applyRule(T rule);
+    public abstract <T extends Rule<G>> void applyRule(T rule);
 
-    public abstract <T extends Rule<GameObjectType>> T addAndApplyRule(
+    public abstract <T extends Rule<G>> T addAndApplyRule(
             T rule);
 
     public abstract void applyAllRules();

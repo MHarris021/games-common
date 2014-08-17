@@ -81,17 +81,12 @@ public class GameObject implements Serializable,
         }
         if (!(o instanceof GameObject)) {
             return false;
-        }
-        GameObject that = (GameObject) o;
+        } else {
+            GameObject that = (GameObject) o;
 
-        if (!description.equals(that.description)) {
-            return false;
-        }
-        if (!id.equals(that.id)) {
-            return false;
-        }
-        if (!name.equals(that.name)) {
-            return false;
+            if ((!description.equals(that.description) && (!id.equals(that.id))) && (!name.equals(that.name))) {
+                return false;
+            }
         }
         return true;
     }

@@ -73,8 +73,4 @@ public abstract class Rule<G extends GameObject> extends GameObject {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 }

@@ -70,8 +70,7 @@ public abstract class Game extends GameObjectWithRules<Game> implements
 
     public <T extends Player> boolean addPlayer(T player) {
         List<Player> playerList = getPlayers();
-        boolean result = playerList.add(player);
-        return result;
+        return playerList.add(player);
     }
 
     @SuppressWarnings("unchecked")

@@ -58,8 +58,7 @@ public class CompositeRule<G extends GameObject, R extends Rule<G>>
 
     @SuppressWarnings("unchecked")
     public <T extends R> T removeRule(int location) {
-        T rule = (T) getRules().remove(location);
-        return rule;
+        return (T) getRules().remove(location);
     }
 
     @SuppressWarnings("unchecked")
@@ -70,8 +69,7 @@ public class CompositeRule<G extends GameObject, R extends Rule<G>>
 
     @SuppressWarnings("unchecked")
     public <T extends R> T setRule(int location, T rule) {
-        T result = (T) getRules().set(location, rule);
-        return result;
+        return (T) getRules().set(location, rule);
     }
 
     @Override
