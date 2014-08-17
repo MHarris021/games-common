@@ -77,7 +77,7 @@ public class GameObjectWithRules<G extends GameObject> extends GameObject
     }
 
     @Override
-    public <T extends Rule<G>> void applyRule(int location) {
+    public void applyRule(int location) {
         ruleContainer.applyRule(location);
     }
 
