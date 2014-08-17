@@ -60,17 +60,8 @@ public abstract class Rule<G extends GameObject> extends GameObject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Rule)) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
+        return this == o || o instanceof Rule && super.equals(o);
 
-        return true;
     }
 
     @Override
