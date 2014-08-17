@@ -76,20 +76,23 @@ public class GameObject implements Serializable,
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (!(o instanceof GameObject))
+        }
+        if (!(o instanceof GameObject)) {
             return false;
-
+        }
         GameObject that = (GameObject) o;
 
-        if (!description.equals(that.description))
+        if (!description.equals(that.description)) {
             return false;
-        if (!id.equals(that.id))
+        }
+        if (!id.equals(that.id)) {
             return false;
-        if (!name.equals(that.name))
+        }
+        if (!name.equals(that.name)) {
             return false;
-
+        }
         return true;
     }
 

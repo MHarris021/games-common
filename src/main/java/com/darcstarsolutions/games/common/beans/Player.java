@@ -36,13 +36,13 @@ public class Player extends GameObjectWithRules<Player> implements
         return score;
     }
 
-    public void setScore(long score) {
-        setScore(BigInteger.valueOf(score));
-    }
-
     @JsonSetter
     public void setScore(BigInteger score) {
         this.score = score;
+    }
+
+    public void setScore(long score) {
+        setScore(BigInteger.valueOf(score));
     }
 
     @Override
@@ -54,17 +54,19 @@ public class Player extends GameObjectWithRules<Player> implements
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (!(o instanceof Player))
+        }
+        if (!(o instanceof Player)) {
             return false;
-        if (!super.equals(o))
+        }
+        if (!super.equals(o)) {
             return false;
-
+        }
         Player player = (Player) o;
-        if (!score.equals(player.score))
+        if (!score.equals(player.score)) {
             return false;
-
+        }
         return true;
     }
 
