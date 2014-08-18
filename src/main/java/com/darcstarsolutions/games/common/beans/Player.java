@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.math.BigInteger;
 
 /**
- * Created by tetn on 12/17/13.
+ * Created by MHarris021 on 12/17/13.
  */
 public class Player extends GameObjectWithRules<Player> implements
         RuleContainer<Player> {
@@ -57,17 +57,11 @@ public class Player extends GameObjectWithRules<Player> implements
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Player)) {
+        if (!(o instanceof Player) || (!super.equals(o))) {
             return false;
         }
-        if (!super.equals(o)) {
-            return false;
-        }
-        Player player = (Player) o;
-        if (!score.equals(player.score)) {
-            return false;
-        }
-        return true;
+        return score.equals(((Player) o).getScore());
+
     }
 
     @Override

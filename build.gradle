@@ -13,6 +13,29 @@ repositories {
     mavenCentral();
 }
 
+sourceSets {
+    integrationTest {
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + compileClasspath
+    }
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+tasks.withType(Test) {
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat 'full'
+    }
+}
+
+check.dependsOn integrationTest
+
 apply plugin: 'jacoco'
 
 jacoco {
