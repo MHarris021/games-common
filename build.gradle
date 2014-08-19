@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 
-version = '1.0.1'
+version = '1.0.2'
 
 
 compileJava {
@@ -25,13 +25,6 @@ task integrationTest(type: Test) {
     group = 'verification'
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
-}
-
-tasks.withType(Test) {
-    testLogging {
-        showStandardStreams = true
-        exceptionFormat 'full'
-    }
 }
 
 check.dependsOn integrationTest
