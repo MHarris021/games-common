@@ -1,6 +1,5 @@
 package com.darcstarsolutions.games.common.beans;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
@@ -20,7 +19,6 @@ public class RuleTest {
     public static final String TEST = "test";
     public static final String TEST_DESCRIPTION = "test description";
     private static final Logger LOGGER = LoggerFactory.getLogger(RuleTest.class);
-    private ObjectMapper objectMapper;
 
     private Rule<GameObject> defaultGameObjectRule;
     private Rule<Player> defaultPlayerRule;
@@ -29,7 +27,6 @@ public class RuleTest {
     @SuppressWarnings("serial")
     @Before
     public void setUp() throws Exception {
-        objectMapper = new ObjectMapper();
         defaultGameObjectRule = new DefaultGameObjectRule();
         defaultPlayerRule = new DefaultPlayerRule();
         mockGameObject = EasyMock.createMock(GameObject.class);
@@ -38,7 +35,6 @@ public class RuleTest {
 
     @After
     public void tearDown() throws Exception {
-        objectMapper = null;
         defaultGameObjectRule = null;
         defaultPlayerRule = null;
     }
