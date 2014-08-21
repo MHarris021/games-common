@@ -15,7 +15,8 @@ repositories {
 
 sourceSets {
     integrationTest {
-        compileClasspath = sourceSets.main.output + configurations.testRuntime + sourceSets.test.runtimeClasspath
+        compileClasspath = sourceSets.main.output +
+                configurations.testRuntime + sourceSets.test.runtimeClasspath
         runtimeClasspath = output + compileClasspath
     }
 }
