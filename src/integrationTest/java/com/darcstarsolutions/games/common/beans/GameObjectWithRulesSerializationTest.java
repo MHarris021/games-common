@@ -1,6 +1,7 @@
 package com.darcstarsolutions.games.common.beans;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -21,13 +22,18 @@ public class GameObjectWithRulesSerializationTest {
     private ObjectMapper objectMapper;
 
     private GameObjectWithRules<GameObject> gameObjectWithRules;
-    private RuleContainer<GameObject> mockRuleContainer;
 
     @Before
     public void setUp() throws Exception {
         objectMapper = new ObjectMapper();
 
         gameObjectWithRules = new GameObjectWithRules<GameObject>("", "");
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        objectMapper = null;
+        gameObjectWithRules = null;
     }
 
     @Test
